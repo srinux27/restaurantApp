@@ -3,7 +3,7 @@
     
     menuCtrl.config(function() { console.log ('Menu Control Setup Done!')});
     
-    menuCtrl.controller('MenuController', function($scope, $rootScope) {
+    menuCtrl.controller('MenuController', function($scope, orderedItems) {
         var menuItems = [
             {name:'Paneer Butter Masala', price: 350, code: 'VG100'},
             {name:'Kadai Paneer', price: 375, code: 'VG101'},
@@ -19,9 +19,9 @@
         $scope.placeOrder = function(code) {
             var itemFound =  false;
             
-            for (var i=0; i<$rootScope.orderedItems.length; i++) {
-                if ($rootScope.orderedItems[i].code === code) {
-                    $rootScope.orderedItems[i].quantity = $rootScope.orderedItems[i].quantity + 1;
+            for (var i=0; i<orderedItems.length; i++) {
+                if (orderedItems[i].code === code) {
+                    orderedItems[i].quantity = orderedItems[i].quantity + 1;
                     itemFound = true;
                     break;
                 }
@@ -30,8 +30,8 @@
             if (!itemFound) {
                 for (var i=0; i<$scope.menuItems.length; i++) {
                     if($scope.menuItems[i].code === code) {
-                        $rootScope.orderedItems.push(menuItems[i]);
-                        $rootScope.orderedItems[$rootScope.orderedItems.length-1].quantity = 1;
+                        orderedItems.push(menuItems[i]);
+                        orderedItems[orderedItems.length-1].quantity = 1;
                         itemFound = false;
                         break;
                     }
