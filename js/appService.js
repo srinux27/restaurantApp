@@ -6,12 +6,12 @@
             return ItemFactory.getMenuItems();
         };
         
-        this.placeOrder = function(code) {
+        this.placeOrder = function(item) {
             var itemFound =  false;
             var orderedItems = OrderFactory.getOrderedItems();
             
             for (var i=0; i<orderedItems.length; i++) {
-                if (orderedItems[i].code === code) {
+                if (orderedItems[i].code === item.code) {
                     orderedItems[i].quantity = orderedItems[i].quantity + 1;
                     itemFound = true;
                     break;
@@ -19,14 +19,9 @@
             };
             
             if (!itemFound) {
-                for (var i=0; i<this.getAllMenuItems().length; i++) {
-                    if(this.getAllMenuItems()[i].code === code) {
-                        orderedItems.push(this.getAllMenuItems()[i]);
-                        orderedItems[orderedItems.length-1].quantity = 1;
-                        itemFound = false;
-                        break;
-                    }
-                };
+                orderedItems.push(item);
+                orderedItems[orderedItems.length-1].quantity = 1;
+                itemFound = false;
             }
         };
     });
