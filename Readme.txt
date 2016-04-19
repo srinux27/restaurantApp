@@ -25,6 +25,7 @@ Provider -
 3. While using the provider in the CONFIG phase - need to suffix PROVIDER 
 
 Constant - 
-1. Same as value but available in CONFIG phase
+1. available in CONFIG phase
+2. cannot be changed
 
 -----------------------------------------------------------------
