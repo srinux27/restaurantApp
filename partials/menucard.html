@@ -1,0 +1,46 @@
+<div class="col-md-6" ng-controller="MenuController">
+    <h3 class="well">Select from this menu!</h3>
+
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr ng-repeat="menuItem in menuItems">
+            <td>{{menuItem.name}}</td>
+            <td>{{menuItem.price}}</td>
+            <td align="center">
+                <button ng-click="placeOrder(menuItem.code)" class="btn btn-primary glyphicon glyphicon-plus"></button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<div class="col-md-6" ng-controller="OrderController">
+    <h3 class="well">Customer Orders <span class="badge ">{{orderedItems.length}}</span></h3>
+
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+        </tr>
+        <tr ng-repeat="item in orderedItems">
+            <td>
+                <button ng-click="deleteItem($index)" class="btn btn-danger glyphicon glyphicon-remove"></button> &nbsp;{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>
+                <input type="text" class="form-control" length="4" ng-model="item.quantity">
+            </td>
+            <td>{{item.price * item.quantity}}</td>
+        </tr>
+        <tr>
+            <td align="right" colspan="3">Total Amount</td>
+            <td>{{totalAmount()}}</td>
+
+        </tr>
+    </table>
+</div>
