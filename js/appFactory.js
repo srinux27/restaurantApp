@@ -1,6 +1,6 @@
 (function() {
 
-    var factModule = angular.module('FactoryModule', []);
+    var factModule = angular.module('FactoryModule', ['ngResource']);
     
     factModule.factory('ItemFactory', function() {
         var menuItems = [

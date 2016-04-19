@@ -31,7 +31,6 @@
         };
     });
     
-    
     svcModule.service('OrderServices', function(OrderFactory) {
         this.getAllOrderedItems = function() {
             return OrderFactory.getOrderedItems();
