@@ -22,8 +22,8 @@
     menuApp.filter('truncate', function () {
         return function (input, param) {
             if (param instanceof Array) {
-                if (param.length===2) {
-                    return ((input.length > param[0]) ? (input.substr(0, param[0]) + param[1] + param[1] + param[1]) : input);   
+                if (param.length === 2) {
+                    return ((input.length > param[0]) ? (input.substr(0, param[0]) + param[1] + param[1] + param[1]) : input);
                 } else {
                     return input;
                 }
@@ -31,6 +31,14 @@
                 return ((input.length > param) ? (input.substr(0, param) + '...') : input);
             }
         };
+    });
+
+    //Below - shows usage of the listener to listen to routing events
+    //Also shows usage of the $location object to get access to property like path, absolute path etc.
+    menuApp.controller('MainController', function ($scope, $location) {
+        $scope.$on('$routeChangeSuccess', function () {
+            console.log('Route change is success .....' + $location.path());
+        });
     });
 
 }());

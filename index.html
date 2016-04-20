@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html data-ng-app="MenuAppModule">
+
 <head>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 </head>
-<body class="container">
-    
-    
+
+<body class="container" ng-controller="MainController">
+
+
     <div class="row">
         <h1>Restaurant Application</h1>
         <div>
@@ -13,12 +15,12 @@
             <a href="#/menucard">Menu Card |</a>
             <a href="#/menuitems">Menu Items</a>
         </div>
-        
-        <ng-view></ng-view>    
-        
+
+        <ng-view></ng-view>
+
     </div>
-        
-    
+
+
     <script src="js/angular.js"></script>
     <script src="js/angular-route.js"></script>
     <script src="js/angular-resource.js"></script>
@@ -28,4 +30,5 @@
     <script src="js/menuController.js"></script>
     <script src="js/orderController.js"></script>
 </body>
+
 </html>
