@@ -13,21 +13,21 @@
             templateUrl: 'partials/menuitems.html'
             , controller: 'MenuController'
         }).when('/login', {
-            templateUrl:'partials/login.html',
-            controller:'LoginController'
+            templateUrl: 'partials/login.html'
+            , controller: 'LoginController'
         }).when('/error', {
             template: '<br><h3>Invalid credentials .....</h3>'
         }).when('/logout', {
-            templateUrl: 'partials/logout.html',
-        }).otherwise({
+            templateUrl: 'partials/logout.html'
+        , }).otherwise({
             template: '<br><h3>No Matching Routes Found!!!</h3>'
         });
     });
 
-    menuApp.run(function($rootScope) {
+    menuApp.run(function ($rootScope) {
         $rootScope.isLogin = false;
     });
-    
+
 
     //Below -- custom filter implementation
     menuApp.filter('truncate', function () {
@@ -49,15 +49,24 @@
     menuApp.controller('MainController', function ($scope, $rootScope, $location) {
         $scope.$on('$routeChangeSuccess', function () {
             if ($location.path() === '/logout') {
-                $rootScope.isLogin = false;    
+                $rootScope.isLogin = false;
             }
         });
+
+        $scope.$on('$routeChangeStart', function () {
+            if (!$rootScope.isLogin) {
+                console.log($rootScope.isLogin);
+                if ($location.path() === '/menuitems') {
+                    $location.path('/login');
+                }
+            };
+        });
     });
-    
+
     //Below shows new controller for the login/logout functionality
     menuApp.controller('LoginController', function ($scope, $rootScope, $location) {
-        $scope.doLogin = function() {
-            if($scope.login.username == 'admin') {
+        $scope.doLogin = function () {
+            if ($scope.login.username == 'admin') {
                 $location.path('/menuitems');
                 $rootScope.isLogin = true;
             } else {
