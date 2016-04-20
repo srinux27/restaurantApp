@@ -13,7 +13,10 @@
         <div>
             <a href="#/">Home |</a>
             <a href="#/menucard">Menu Card |</a>
-            <a href="#/menuitems">Menu Items</a>
+            
+            <a href="#/menuitems" ng-show="isLogin">Menu Items |</a>
+            <a href="#/login" ng-hide="isLogin">Login |</a>
+            <a href="#/logout" ng-show="isLogin">Logout</a>
         </div>
 
         <ng-view></ng-view>

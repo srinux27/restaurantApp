@@ -12,11 +12,22 @@
         }).when('/menuitems', {
             templateUrl: 'partials/menuitems.html'
             , controller: 'MenuController'
+        }).when('/login', {
+            templateUrl:'partials/login.html',
+            controller:'LoginController'
+        }).when('/error', {
+            template: '<br><h3>Invalid credentials .....</h3>'
+        }).when('/logout', {
+            templateUrl: 'partials/logout.html',
         }).otherwise({
             template: '<br><h3>No Matching Routes Found!!!</h3>'
         });
     });
 
+    menuApp.run(function($rootScope) {
+        $rootScope.isLogin = false;
+    });
+    
 
     //Below -- custom filter implementation
     menuApp.filter('truncate', function () {
@@ -35,10 +46,24 @@
 
     //Below - shows usage of the listener to listen to routing events
     //Also shows usage of the $location object to get access to property like path, absolute path etc.
-    menuApp.controller('MainController', function ($scope, $location) {
+    menuApp.controller('MainController', function ($scope, $rootScope, $location) {
         $scope.$on('$routeChangeSuccess', function () {
-            console.log('Route change is success .....' + $location.path());
+            if ($location.path() === '/logout') {
+                $rootScope.isLogin = false;    
+            }
         });
+    });
+    
+    //Below shows new controller for the login/logout functionality
+    menuApp.controller('LoginController', function ($scope, $rootScope, $location) {
+        $scope.doLogin = function() {
+            if($scope.login.username == 'admin') {
+                $location.path('/menuitems');
+                $rootScope.isLogin = true;
+            } else {
+                $location.path('/error');
+            }
+        }
     });
 
 }());
