@@ -21,7 +21,7 @@
     </tr>
     <tr ng-repeat="menuItem in menuItems | filter : search | orderBy : '-name'">
         <!-- Below also shows use of custom filter called "truncate". Refer menuApp.js for the implementation of this filter -->
-        <td>{{menuItem.name | uppercase | truncate : 18}}</td>
+        <td>{{menuItem.name | uppercase | truncate : [18, '*']}}</td>
         <td>{{menuItem.code}}</td>
         <td>{{menuItem.price}}</td>
         <td>

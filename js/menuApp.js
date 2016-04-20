@@ -21,7 +21,15 @@
     //Below -- custom filter implementation
     menuApp.filter('truncate', function () {
         return function (input, param) {
-            return ((input.length > param) ? (input.substr(0, param) + '...') : input);
+            if (param instanceof Array) {
+                if (param.length===2) {
+                    return ((input.length > param[0]) ? (input.substr(0, param[0]) + param[1] + param[1] + param[1]) : input);   
+                } else {
+                    return input;
+                }
+            } else {
+                return ((input.length > param) ? (input.substr(0, param) + '...') : input);
+            }
         };
     });
 
