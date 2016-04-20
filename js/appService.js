@@ -24,6 +24,18 @@
                         itemFound = false;
             }
         };
+        
+        this.addMenuItem = function(newmenuitem) {
+            ItemFactory.addMenuItem(newmenuitem);
+        };
+        
+        this.removeItem = function(idx, itemID) {
+            ItemFactory.removeMenuItem(idx, itemID);
+        }
+        
+        this.editItem = function(idx, item) {
+            ItemFactory.updateMenuItem(idx, item);
+        }
     });
     
     svcModule.service('OrderServices', function(OrderFactory) {

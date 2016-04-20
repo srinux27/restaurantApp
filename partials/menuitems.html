@@ -1,14 +1,28 @@
 <h3>Manage Menu Items</h3>
 
+<form class="form-inline well ">
+    <input class="form-control" ng-model="newmenuitem.code" placeholder="Enter Item Code">
+    <input class="form-control" ng-model="newmenuitem.name" placeholder="Enter Item Name">
+    <input class="form-control" ng-model="newmenuitem.price" placeholder="Enter Item Price">
+    
+    <button class="btn btn-primary glyphicon glyphicon-floppy-save" ng-click="save()"></button>
+</form>
+
+
 <table class="table table-bordered table-striped">
     <tr>
         <th>Name</th>
         <th>Code</th>
         <th>Price</th>
+        <th>&nbsp;</th>
     </tr>
     <tr ng-repeat="menuItem in menuItems">
         <td>{{menuItem.name}}</td>
         <td>{{menuItem.code}}</td>
         <td>{{menuItem.price}}</td>
+        <td>
+            <button class="btn btn-danger glyphicon glyphicon-remove" ng-click="remove($index, menuItem.id)"></button> &nbsp;
+            <button class="btn btn-success glyphicon glyphicon-edit" ng-click="edit($index, menuItem)"></button>
+        </td>
     </tr>
 </table>
