@@ -17,3 +17,4 @@ Code.txt filter=lfs diff=lfs merge=lfs -text
 uniz64.txt filter=lfs diff=lfs merge=lfs -text
 draw.txt filter=lfs diff=lfs merge=lfs -text
 sample.txt filter=lfs diff=lfs merge=lfs -text
+sample_ram.txt filter=lfs diff=lfs merge=lfs -text
